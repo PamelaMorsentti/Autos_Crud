@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TIPOGRAFIA GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/sedan.png" type="image/x-icon">
+
+    <title>Concesionaria de Autos</title>
+    <!-- CSS PERSONALIZADO -->
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <!-- BARRA DE NAVEGACIÓN -->
+        <nav class="navbar">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <!-- colocar un logo -->
+                <img src="assets/img/sedan.png" alt="Logo" class="logo">
+                <li><a href="index.html">Inicio</a></li>
+                <!-- <li><a href="templates/contacto.html">Contacto</a></li> -->
+                <li><a href="../templates/crud.html">CRUD</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="slogan">
+            <div class="espaciado3"></div>
+            <h2>
+                “Conduciendo hacia el futuro, un auto a la vez”
+            </h2>
+            <h3>
+                “Más que autos, entregamos experiencias”
+            </h3>
+        </section>
+        <div class="espaciado3"></div>
+        <div class="carrusel">
+            <img src="https://automotiva.com.ar/wp-content/uploads/2019/02/Volkswagen_Passat_2020-5.jpg"
+                alt="vw passat">
+            <img src="https://fotos.perfil.com/2021/10/15/trim/1280/720/ford-focus-2022-1246536.jpg" alt="ford focus">
+            <img src="https://fotos.perfil.com/2022/06/03/toyota-corolla-1366408.jpg" alt="toyota corolla">
+        </div>
+        <section class="videoPresentacion">
+            <iframe src="https://www.youtube.com/embed/ucvaV1svfTs?autoplay=1&mute=1"
+                title="Los 10 autos DEPORTIVOS más BARATOS" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <div>
+            <h4 class="novedades" style="text-align: center;">NOVEDADES DE AUTOS</h4>
+        </div>
+        <!-- NOTA: A FUTURO ACA DEBE TRAER LA INFO DE LA API -->
+        <section>
+            <!-- CONTENEDOR PRINCIPAL PA LAS TARJETAS, QUE TIENEN NOTICIAS U OFERTAS -->
+            <div class="contenedorNoticias">
+                <div class="card">
+                    <img src="https://s1.abcstatics.com/media/motor/2015/12/21/coche-azul--620x349.jpg" alt="">
+                    <h3>$30.000.000</h3>
+                    <p>
+                        Con su pintura azul metálico y líneas aerodinámicas, este auto no solo promete velocidad, sino
+                        también una experiencia de conducción suave y elegante. Equipado con un motor turbo de alta
+                        eficiencia, ofrece una aceleración impresionante sin sacrificar el rendimiento del combustible
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="https://www.chevrolet.com.ar/content/dam/chevrolet/mercosur/argentina/espanol/index/pickups-and-trucks/2021-s10-cd-hc/01-images/refresh/colorizer/chevrolet-s10-high-country-black-meet-kettle.png?imwidth=960"
+                        alt="">
+                    <h3>$60.000.000</h3>
+                    <p>
+                        Robusto y poderoso, este todoterreno está listo para cualquier aventura. Con tracción en las
+                        cuatro ruedas, suspensión reforzada y un motor que ruge con fuerza, puede enfrentarse a los
+                        terrenos más difíciles mientras mantiene un interior lujoso y confortable.
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="https://www.infobae.com/new-resizer/JKlOyoHdeqJhhh18nzJpnIygwEY=/1440x960/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/7FPSIL56TRC2BOYQKAPUJLPKVA.jpeg"
+                        alt="">
+                    <h3>$40.000.000</h3>
+                    <p>Este vehículo es la definición de innovación, con su sistema de conducción autónoma de vanguardia
+                        y una interfaz inteligente que se adapta a las necesidades del conductor. Su diseño futurista y
+                        sostenible incluye paneles solares integrados para una carga eficiente.</p>
+                </div>
+                <div class="card">
+                    <img src="https://chery.cl/wp-content/uploads/2022/01/tipos-de-autos.jpg" alt="">
+                    <h3>$45.000.000</h3>
+                    <p>
+                        Este sedán de lujo combina un diseño clásico con la más alta tecnología. Su interior de cuero
+                        premium, sistema de sonido envolvente y asientos con masaje hacen que cada viaje sea una
+                        experiencia de primera clase. Con su motor silencioso pero potente, es la elección perfecta para
+                        quienes buscan comodidad y estilo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <!-- TALVEZ SE DEBERIA AGREGAR MAS INFO O MARKETING -->
+        <section class="infoMarketing">
+            <div class="redes">
+                <a href="https://www.facebook.com/concesionaria"><img src="https://cdn-icons-png.flaticon.com/256/124/124010.png" alt="Facebook"></a>
+                <a href="https://www.twitter.com/concesionaria"><img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com/concecionaria"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+            </div>
+            <h3 class="espaciado3">SOMOS TOP UNO EN VENTAS</h3>
+            <img src="https://png.pngtree.com/png-clipart/20221008/original/pngtree-number-1-best-seller-award-badge-png-image_8666630.png"
+                alt="topOne">
+            <h3 class="espaciado3">SOMOS TOP UNO EN VENTAS</h3>
+            <h3>
+                La concesionaria que redefine la excelencia. “Autos Prestigio” no es solo un destino, es la cumbre del
+                lujo automotriz. Con una selección inigualable de vehículos de alta gama y un servicio al cliente que
+                supera todas las expectativas, nos hemos ganado el título de la mejor concesionaria del mundo. Nuestro
+                compromiso con la calidad y la satisfacción del cliente es inquebrantable, y cada auto que vendemos es
+                una promesa de rendimiento, elegancia y confiabilidad. Descubre la perfección en cada detalle, desde la
+                primera bienvenida hasta el servicio posventa. En “Autos Prestigio”, no solo compras un auto; adquieres
+                una pieza de la excelencia automotriz.
+            </h3>
+        </section>
+    </footer>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Autos 🚀</title>
+    <link rel="stylesheet" href="../static/css/estilos.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar-index ">
+            <!--<img class="logo-nav" src="./static/imagenes/logos-nav.webp" alt="logo agencia de aprendizaje">-->
+            <img class="logo-nav"
+                src="https://static.vecteezy.com/system/resources/previews/006/850/314/non_2x/auto-car-dealer-logo-design-with-concept-sports-vehicle-icon-silhouette-on-black-background-illustration-vector.jpg"
+                alt="logo agencia de autos">
+        </nav>
+        </header>
+        
+        <div class="logo-centrado">
+            <!--<img src="./static/imagenes/logo_Codo.jpg" alt="logo">-->
+            <img class="logoCar"
+                src="https://us.123rf.com/450wm/themoderncanvas/themoderncanvas2109/themoderncanvas210900008/175067545-logotipo-de-escudo-de-silueta-de-coche-deportivo-signo-de-concesionario-de-veh%C3%ADculos-de-motor-de.jpg"
+                alt="logoCar">
+        </div>
+
+    <h1>Listado de Autos del Inventario</h1><br>
+
+    <table> <!-- Se crea una tabla para mostrar los productos. -->
+        <thead> <!--Encabezado de la tabla con columnas para código, descripción, cantidad, precio y acciones.-->
+            <tr>
+                <th>Código</th>
+                <th>Color</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Cantidad</th>                
+                <th align="right">Precio</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody id="tablaProductos"> </tbody>
+    </table><br>
+
+    <div class="contenedor-centrado">
+        <a href="../templates/crud.html">Menu principal</a>
+    </div>
+    <script src="../funcionesJS/listado.js"></script>
+</body>
+</html>
