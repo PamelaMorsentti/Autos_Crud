@@ -78,7 +78,7 @@ class Catalogo:
         self.cursor.execute(f"SELECT * FROM autos WHERE codigo = {codigo}")
         return self.cursor.fetchone()
 
-    # ---------------------------------------------------------------- FALTA HACER -- hecho
+    # ------------- MODIFICADO POR PAMELA ---------------------------------------
     def modificar_auto(self, codigo, nuevo_color, nuevo_modelo, nueva_marca, nueva_cantidad, nuevo_precio, nueva_imagen):
         sql = "UPDATE autos SET color = %s, modelo = %s, marca = %s, cantidad = %s, precio = %s, imagen_url = %s WHERE codigo = %s"
         valores = (nuevo_color, nuevo_modelo, nueva_marca,
@@ -94,6 +94,7 @@ class Catalogo:
         return autos
 
     # ---------------------------------------------------------------- HECHO
+    # ------------- MODIFICADO POR PAMELA ---------------------------------------
     def eliminar_auto(self, codigo):
         # Eliminamos un producto de la tabla a partir de su código
         self.cursor.execute(f"DELETE FROM autos WHERE codigo = {codigo}")
@@ -128,7 +129,8 @@ class Catalogo:
 #                     password='', database='mi_app')
 
 # OBJETO DE GASTON
-catalogo = Catalogo(host='localhost', user='root', password='root', database='miapp')
+catalogo = Catalogo(host='localhost', user='root',
+                    password='root', database='miapp')
 # catalogo = Catalogo(host='USUARIO.mysql.pythonanywhere-services.com', user='USUARIO', password='CLAVE', database='USUARIO$miapp')
 
 
@@ -221,6 +223,8 @@ def agregar_auto():
 # --------------------------------------------------------------------
 # Modificar un producto según su código
 # --------------------------------------------------------------------
+# ------------- MODIFICADO POR PAMELA ---------------------------------------
+
 @app2.route("/autos/<int:codigo>", methods=["PUT"])
 # La ruta Flask /productos/<int:codigo> con el método HTTP PUT está diseñada para actualizar la información de un producto existente en la base de datos, identificado por su código.
 # La función modificar_producto se asocia con esta URL y es invocada cuando se realiza una solicitud PUT a /productos/ seguido de un número (el código del producto).
@@ -231,7 +235,6 @@ def modificar_auto(codigo):
     nueva_marca = request.form.get("marca")
     nueva_cantidad = request.form.get("cantidad")
     nuevo_precio = request.form.get("precio")
-    nueva_imagen = request.form.get("imagen")
 
     # Verifica si se proporcionó una nueva imagen
     if 'imagen' in request.files:
@@ -248,9 +251,9 @@ def modificar_auto(codigo):
         imagen.save(os.path.join(RUTA_DESTINO, nombre_imagen))
 
         # Busco el producto guardado
-        auto = catalogo.consultar_auto(codigo)
-        if auto:  # Si existe el producto...
-            imagen_vieja = auto["imagen_url"]
+        producto = catalogo.consultar_auto(codigo)
+        if producto:  # Si existe el producto...
+            imagen_vieja = producto["imagen_url"]
             # Armo la ruta a la imagen
             ruta_imagen = os.path.join(RUTA_DESTINO, imagen_vieja)
 
@@ -260,12 +263,12 @@ def modificar_auto(codigo):
 
     else:
         # Si no se proporciona una nueva imagen, simplemente usa la imagen existente del producto
-        auto = catalogo.consultar_auto(codigo)
-        if auto:
-            nombre_imagen = auto["imagen_url"]
+        producto = catalogo.consultar_auto(codigo)
+        if producto:
+            nombre_imagen = producto["imagen_url"]
 
     # Se llama al método modificar_producto pasando el codigo del producto y los nuevos datos.
-    if catalogo.modificar_auto(codigo, nuevo_color, nuevo_modelo, nueva_marca, nueva_cantidad, nuevo_precio, nueva_imagen):
+    if catalogo.modificar_auto(codigo, nuevo_color, nuevo_modelo, nueva_marca, nueva_cantidad, nuevo_precio, nombre_imagen):
 
         # Si la actualización es exitosa, se devuelve una respuesta JSON con un mensaje de éxito y un código de estado HTTP 200 (OK).
         return jsonify({"mensaje": "Auto modificado"}), 200
@@ -277,14 +280,16 @@ def modificar_auto(codigo):
 # --------------------------------------------------------------------
 # Eliminar un producto según su código
 # --------------------------------------------------------------------
+# ------------- MODIFICADO POR PAMELA ---------------------------------------
+
 @app2.route("/autos/<int:codigo>", methods=["DELETE"])
 # La ruta Flask /productos/<int:codigo> con el método HTTP DELETE está diseñada para eliminar un producto específico de la base de datos, utilizando su código como identificador.
 # La función eliminar_producto se asocia con esta URL y es llamada cuando se realiza una solicitud DELETE a /productos/ seguido de un número (el código del producto).
 def eliminar_auto(codigo):
     # Busco el producto en la base de datos
-    auto = catalogo.consultar_auto(codigo)
-    if auto:  # Si el producto existe, verifica si hay una imagen asociada en el servidor.
-        imagen_vieja = auto["imagen_url"]
+    producto = catalogo.consultar_auto(codigo)
+    if producto:  # Si el producto existe, verifica si hay una imagen asociada en el servidor.
+        imagen_vieja = producto["imagen_url"]
         # Armo la ruta a la imagen
         ruta_imagen = os.path.join(RUTA_DESTINO, imagen_vieja)
 

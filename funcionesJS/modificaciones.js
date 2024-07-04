@@ -1,6 +1,9 @@
+
+// ------------- MODIFICADO POR PAMELA---------------------------------------
+
 const URL = "http://127.0.0.1:5000/"
 
-// Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+//Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
 //const URL = "https://USUARIO.pythonanywhere.com/"
 
 // Variables de estado para controlar la visibilidad y los datos del formulario
@@ -13,14 +16,14 @@ let precio = '';
 let imagen_url = '';
 let imagenSeleccionada = null;
 let imagenUrlTemp = null;
-let mostrarDatosAuto = false;
+let mostrarDatosProducto = false;
 
-document.getElementById('form-obtener-auto').addEventListener('submit', obtenerAuto);
+document.getElementById('form-obtener-producto').addEventListener('submit', obtenerProducto);
 document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
 document.getElementById('nuevaImagen').addEventListener('change', seleccionarImagen);
 
 // Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos del producto correspondiente al código ingresado.
-function obtenerAuto(event) {
+function obtenerProducto(event) {
     event.preventDefault();
     codigo = document.getElementById('codigo').value;
     fetch(URL + 'autos/' + codigo)
@@ -28,7 +31,7 @@ function obtenerAuto(event) {
             if (response.ok) {
                 return response.json()
             } else {
-                throw new Error('Error al obtener los datos del auto.')
+                throw new Error('Error al obtener los datos del Auto.')
             }
         })
         .then(data => {
@@ -38,18 +41,18 @@ function obtenerAuto(event) {
             cantidad = data.cantidad;
             precio = data.precio;
             imagen_url = data.imagen_url;
-            mostrarDatosAuto = true; //Activa la vista del segundo formulario
+            mostrarDatosProducto = true; //Activa la vista del segundo formulario
             mostrarFormulario();
         })
         .catch(error => {
-            alert('Código de auto no encontrado.');
+            alert('Código no encontrado.');
         });
 }
 
 // Muestra el formulario con los datos del producto
 function mostrarFormulario() {
-    if (mostrarDatosAuto) {
-        document.getElementById('colorModificar').value = color;
+    if (mostrarDatosProducto) {
+        document.getElementById('coloModificarr').value = color;
         document.getElementById('modeloModificar').value = modelo;
         document.getElementById('marcaModificar').value = marca;
         document.getElementById('cantidadModificar').value = cantidad;
@@ -68,9 +71,9 @@ function mostrarFormulario() {
             imagenActual.style.display = 'none'; // Oculta la imagen si no hay URL
         }
 
-        document.getElementById('datos-auto').style.display = 'block';
+        document.getElementById('datos-producto').style.display = 'block';
     } else {
-        document.getElementById('datos-auto').style.display = 'none';
+        document.getElementById('datos-producto').style.display = 'none';
     }
 }
 
@@ -91,7 +94,7 @@ function guardarCambios(event) {
 
     const formData = new FormData();
     formData.append('codigo', codigo);
-    formData.append('color', document.getElementById('colorModificar').value);
+    formData.append('color', document.getElementById('coloModificarr').value);
     formData.append('modelo', document.getElementById('modeloModificar').value);
     formData.append('marca', document.getElementById('marcaModificar').value);
     formData.append('cantidad', document.getElementById('cantidadModificar').value);
@@ -108,9 +111,9 @@ function guardarCambios(event) {
     })
         .then(response => {
             if (response.ok) {
-                return response.json();
+                return response.json()
             } else {
-                throw new Error('Error al guardar los cambios del auto.');
+                throw new Error('Error al guardar los cambios del auto.')
             }
         })
         .then(data => {
@@ -126,7 +129,7 @@ function guardarCambios(event) {
 // Restablece todas las variables relacionadas con el formulario a sus valores iniciales, lo que efectivamente "limpia" el formulario.
 function limpiarFormulario() {
     document.getElementById('codigo').value = '';
-    document.getElementById('colorModificar').value = '';
+    document.getElementById('coloModificarr').value = '';
     document.getElementById('modeloModificar').value = '';
     document.getElementById('marcaModificar').value = '';
     document.getElementById('cantidadModificar').value = '';
@@ -148,7 +151,7 @@ function limpiarFormulario() {
     imagen_url = '';
     imagenSeleccionada = null;
     imagenUrlTemp = null;
-    mostrarDatosAuto = false;
+    mostrarDatosProducto = false;
 
-    document.getElementById('datos-auto').style.display = 'none';
+    document.getElementById('datos-producto').style.display = 'none';
 }
